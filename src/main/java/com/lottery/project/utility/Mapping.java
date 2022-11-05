@@ -12,8 +12,10 @@ public class Mapping {
 	
 	
 	public class CONTROLLER {
-		public static final String INDEX = "/index";
 		public static final String LOGIN = "/login";
+		public static final String REGISTER = "/register";
+		
+		public static final String INDEX = "/index";
 		public static final String ACTIVITY ="/addActivity";
 		public static final String DASHBOARD = "/dashboard";
 		public static final String SAVE_ACTIVITY ="/saveActivity";
@@ -21,10 +23,11 @@ public class Mapping {
 	}
 	
 	public class PAGE {
-		public static final String LOGIN = "Login";
+		public static final String LOGIN = "login";
+		public static final String REGISTER = "register";
+		
+		
 		public static final String DASHBOARD = "dashboard";
-		public static final String ACTIVITY = "/app/view/activity/activity";
-		public static final String COL_ACCOUNT_TYPE = "/app/view/collAccountType/collAccountType";
 		
 	}
 	
