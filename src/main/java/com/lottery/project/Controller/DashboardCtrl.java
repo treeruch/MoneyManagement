@@ -31,6 +31,20 @@ public class DashboardCtrl {
 	private LotterService lotterService;
 	
 	protected Log logger = LogFactory.getLog(this.getClass());
+	
+	@RequestMapping(method = RequestMethod.GET, value = Mapping.CONTROLLER.DASHBOARD)
+	 public ModelAndView dashboardGet(HttpServletRequest request,HttpSession session) { 
+		ModelAndView modelAndView = new ModelAndView(Mapping.PAGE.DASHBOARD);
+		logger.info("Dashboard...");
+         LotteryModel obj = lotterService.findDashboard();
+		
+		modelAndView.addObject("sumTopThree",obj.getSumTopThreePrice());
+		modelAndView.addObject("sumTod",obj.getSumTodPrice());
+		modelAndView.addObject("sumTopTwo",obj.getSumTopTwoPrice());
+		modelAndView.addObject("sumUnderTwo",obj.getSumUnderTwoPrice());
+		modelAndView.addObject("sumlottery",obj.getSumPrice());
+		return modelAndView; 
+	}
 
 	@RequestMapping(method = RequestMethod.POST, value = Mapping.CONTROLLER.DASHBOARD)
 	 public ModelAndView dashboard(HttpServletRequest request,HttpSession session) { 
