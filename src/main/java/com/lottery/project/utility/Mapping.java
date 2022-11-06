@@ -10,34 +10,25 @@ public class Mapping {
 	
 	public static final String REDIRECT = "redirect:";
 	
-	
-	public class CONTROLLER {
-		public static final String LOGIN = "/login";
-		public static final String REGISTER = "/register";
-		
-		public static final String INDEX = "/index";
-		public static final String ACTIVITY ="/addActivity";
-		public static final String DASHBOARD = "/dashboard";
-		public static final String SAVE_ACTIVITY ="/saveActivity";
-		public static final String COL_ACCOUNT_TYPE ="/collAcctivityType";
-	}
-	
 	public class PAGE {
 		public static final String LOGIN = "login";
 		public static final String REGISTER = "register";
 		public static final String VIEW_MAP_LOTTERY_LIST = "moneyAdd";
-		
 		public static final String DASHBOARD = "dashboard";
+		public static final String SETTING = "setting";
 		
 	}
 	
 
 	public class GET {
+		public static final String GET_MAP_LOGIN = "/login";
+		public static final String GET_MAP_REGISTER = "/register";
 		public static final String GET_MAP_MONEY_ADD = "/moneyAdd";
+		public static final String GET_MAP_SETTING = "/setting";
+		
 		
 		public static final String GET_MAP_USER = "/user";
 		public static final String GET_MAP_LOTTERY_ADD = "/lotteryAdd";
-		
 		public static final String GET_MAP_LOTTERY_TOP_THREE = "/lotteryTopThree";
 		public static final String GET_MAP_LOTTERY_TOD = "/lotteryTod";
 		public static final String GET_MAP_LOTTERY_TOP_TWO = "/lotteryTopTwo";
@@ -57,6 +48,17 @@ public class Mapping {
 		public static final String POST_MAP_LOTTERY_TOP_TWO = "/riskTopTwo";
 		public static final String POST_MAP_LOTTERY_UNDER_TWO = "/riskUnderTwo";
 		
+	}
+	
+	
+
+	public class CONTROLLER {
+		
+		public static final String INDEX = "/index";
+		public static final String ACTIVITY ="/addActivity";
+		public static final String DASHBOARD = "/dashboard";
+		public static final String SAVE_ACTIVITY ="/saveActivity";
+		public static final String COL_ACCOUNT_TYPE ="/collAcctivityType";
 	}
 	
 	public class VIEW {

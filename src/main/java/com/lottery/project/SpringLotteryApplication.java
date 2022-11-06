@@ -25,7 +25,7 @@ public class SpringLotteryApplication{
 		SpringApplication.run(SpringLotteryApplication.class, args);
 	}
 	
-	@RequestMapping(method = RequestMethod.GET, value = Mapping.CONTROLLER.LOGIN)
+	@RequestMapping(method = RequestMethod.GET, value = Mapping.GET.GET_MAP_LOGIN)
 	 public ModelAndView Welcome(HttpServletRequest request,HttpSession session) { 
 		ModelAndView modelAndView = new ModelAndView(Mapping.PAGE.LOGIN);
 		logger.info("Start Project...");
