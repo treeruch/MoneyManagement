@@ -10,7 +10,6 @@ import com.lottery.project.Repository.HistoryRepository;
 import com.lottery.project.Repository.LotteryRepository;
 import com.lottery.project.Repository.LotteryRepositoryJPA;
 import com.lottery.project.entity.Lottery;
-import com.lottery.project.model.HistoryModel;
 import com.lottery.project.model.LotteryModel;
 
 @Service
