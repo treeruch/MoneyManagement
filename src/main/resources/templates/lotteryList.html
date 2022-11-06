@@ -13,6 +13,15 @@
 	<link rel="stylesheet" href="../../dist/css/adminlte.min.css">
 	
     </th:block>
+    <style>
+    @media (min-width: 768px){
+      .main-header {
+		    transition: margin-left .3s ease-in-out;
+		    margin-left: 0px;
+		}
+	}
+    </style>
+    
 </head>
 <body>
 	<th:block layout:fragment="content">
@@ -29,57 +38,261 @@
 				<div class="col-md-12">
 					<div class="card card-primary">
 						<div class="card-header">
-							<h3 class="card-title">ข้อมูลการซื้อ</h3>
+							<h3 class="card-title">วางแผนการเงิน</h3>
 						</div>
 						<div class="row">
 					          <div class="col-12">
 					            <div class="card">
 					              <!-- /.card-header -->
 					              <div class="card-body">
-					                 <table id="example1" class="table table-bordered table-hover">
-					                  <thead>
-					                  <tr>
-					                    <th style="text-align: center;">บิล</th>
-					                    <th style="text-align: center;">วันที่</th>
-					                    <th style="text-align: center;">ผู้ส่ง</th>
-										<th style="text-align: left;">สามตัวบน <i class=" fab fa-bitcoin"></i></th>
-										<th style="text-align: left;">โต๊ด<i class=" fab fa-bitcoin"></i></th>
-										<th style="text-align: left;">สองตัวบน<i class=" fab fa-bitcoin"></i></th>
-										<th style="text-align: left;">สองตัวล่าง<i class=" fab fa-bitcoin"></i></th>
-										<th style="text-align: left;">รวมเงิน<i class=" fab fa-bitcoin"></i></th>
-										<th style="text-align: left;">#</th>
-					                  </tr>
-					                  </thead>
-					                  
-					                  <tbody>
-					                   <tr th:each="obj : ${listHistory}">
-					                    <td th:text=${objStat.index+1}  style="text-align: center;"></td>
-										<td th:text=${obj.createDate} style="text-align: center;"></td>
-										<td th:text=${obj.createBy} style="text-align: center;"></td>
-										<td th:text=${obj.sumTopThreePriceStr}></td>
-										<td th:text=${obj.sumTodPriceStr}></td>
-										<td th:text=${obj.sumTopTwoPriceStr}></td>
-										<td th:text=${obj.sumUnderTwoPriceStr}></td>
-										<td th:text=${obj.sumPriceStr}></td>
-											<td style="text-align: center;"><a th:href="@{'/editHistory/'+${obj.groupLottery}}" class="small-box-footer"><i class="fas fa-money-check-alt" style="color:red"></i></a></td>
-										</tr>
-					                  </tbody>
-					                  
-					                  <tfoot>
-					                  <tr>
-					                     <th style="text-align: center;">บิล</th>
-					                    <th style="text-align: center;">วันที่</th>
-					                     <th style="text-align: center;">ผู้ส่ง</th>
-										<th style="text-align: left;">สามตัวบน<i class=" fab fa-bitcoin"></i></th>
-										<th style="text-align: left;">โต๊ด<i class=" fab fa-bitcoin"></i></th>
-										<th style="text-align: left;">สองตัวบน<i class=" fab fa-bitcoin"></i></th>
-										<th style="text-align: left;">สองตัวล่าง<i class=" fab fa-bitcoin"></i></th>
-										<th style="text-align: left;">รวมเงิน<i class=" fab fa-bitcoin"></i></th>
-										<th style="text-align: left;">#</th>
-					                  </tr>
-					                  </tfoot>
-					                </table>
-					              </div>
+					                 <div class="row" id="addThreeHidden">
+										<div class="col-md-12" id="addThreeHiddenRow">
+										   <div class="form-group row">
+												<div class="col-sm-5" style="text-align: center;">
+													
+												</div>
+												<div class="col-sm-1" style="text-align: center;">
+													<label style="text-align: center;"> ม.ค. </label>
+												</div>
+												<div class="col-sm-1" style="text-align: center;">
+													<label style="text-align: center;"> ก.พ. </label>
+												</div>
+												<div class="col-sm-1" style="text-align: center;">
+													<label style="text-align: center;"> มี.ค. </label>
+												</div>
+												<div class="col-sm-1" style="text-align: center;">
+													<label style="text-align: center;"> เม.ย. </label>
+												</div>
+												<div class="col-sm-1" style="text-align: center;">
+													<label style="text-align: center;"> พ.ค. </label>
+												</div>
+												<div class="col-sm-1" style="text-align: center;">
+													<label style="text-align: center;"> มิ.ย. </label>
+												</div>
+												
+											</div>
+										
+											<div class="form-group row">
+												<div class="col-sm-5" style="text-align: center;">
+													<label style="text-align: center;"> ค่าใช้จ่าย </label>
+												</div>
+												<div class="col-sm-1">
+													<input type="text" onchange="checkValueTopThree(event)"
+														class="form-control" id="topThreePriceArray"
+														name="topThreePriceArray" th:value="${topThreePriceArray}" placeholder="รายรับ"
+														oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+												</div>
+												<div class="col-sm-1">
+													<input type="text" onchange="checkValueTodThree(event)"
+														class="form-control" id="todPriceArray"
+														name="todPriceArray" th:value="${todPriceArray}" placeholder="รายรับ"
+														oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+												</div>
+												<div class="col-sm-1">
+													<input type="text" onchange="checkValueThree(event)" class="form-control" 
+													    id="threeArray" name="threeArray"
+														th:value="${threeArray}" placeholder="รายรับ"
+														oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+												</div>
+												<div class="col-sm-1">
+													<input type="text" onchange="checkValueTopThree(event)"
+														class="form-control" id="topThreePriceArray"
+														name="topThreePriceArray" th:value="${topThreePriceArray}" placeholder="รายรับ"
+														oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+												</div>
+												<div class="col-sm-1">
+													<input type="text" onchange="checkValueTodThree(event)"
+														class="form-control" id="todPriceArray"
+														name="todPriceArray" th:value="${todPriceArray}" placeholder="รายรับ"
+														oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+												</div>
+												<div class="col-sm-1">
+													<input type="text" onchange="checkValueThree(event)" class="form-control" 
+													    id="threeArray" name="threeArray"
+														th:value="${threeArray}" placeholder="รายรับ"
+														oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+												</div>
+												
+												<label id="addThreeMessg" class="col-sm-1 col-form-label" style="text-align: center; color: red; display: none"><i class="fas fa-window-close"></i></label>
+												<div class="col-sm-1" style="text-align: right;">
+												</div>
+	
+											</div>
+											
+											<div class="form-group row">
+												<div class="col-sm-5">
+													<input type="text" onchange="checkValueThree(event)" class="form-control" 
+													    id="threeArray" name="threeArray"
+														th:value="${threeArray}">
+												</div>
+												<div class="col-sm-1">
+													<input type="text" onchange="checkValueTopThree(event)"
+														class="form-control" id="topThreePriceArray"
+														name="topThreePriceArray" th:value="${topThreePriceArray}"
+														oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+												</div>
+												<div class="col-sm-1">
+													<input type="text" onchange="checkValueTodThree(event)"
+														class="form-control" id="todPriceArray"
+														name="todPriceArray" th:value="${todPriceArray}"
+														oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+												</div>
+												<div class="col-sm-1">
+													<input type="text" onchange="checkValueThree(event)" class="form-control" 
+													    id="threeArray" name="threeArray"
+														th:value="${threeArray}"
+														oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+												</div>
+												<div class="col-sm-1">
+													<input type="text" onchange="checkValueTopThree(event)"
+														class="form-control" id="topThreePriceArray"
+														name="topThreePriceArray" th:value="${topThreePriceArray}"
+														oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+												</div>
+												<div class="col-sm-1">
+													<input type="text" onchange="checkValueTodThree(event)"
+														class="form-control" id="todPriceArray"
+														name="todPriceArray" th:value="${todPriceArray}"
+														oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+												</div>
+												<div class="col-sm-1">
+													<input type="text" onchange="checkValueThree(event)" class="form-control" 
+													    id="threeArray" name="threeArray"
+														th:value="${threeArray}"
+														oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+												</div>
+												
+												<label id="addThreeMessg" class="col-sm-1 col-form-label" style="text-align: center; color: red; display: none"><i class="fas fa-window-close"></i></label>
+												<div class="col-sm-1" style="text-align: right;">
+													<button type="button" class="btn btn-danger"
+														id="deleteLotteryThree" onclick="deleteRowThree(event)">ลบ</button>
+												</div>
+	
+											</div>
+										</div>
+										 <div class="form-group row">
+										 
+										
+										<div class="col-md-12" id="addThreeHiddenRow">
+										   <div class="form-group row">
+												<div class="col-sm-5" style="text-align: center;">
+													<label> </label>
+												</div>
+												<div class="col-sm-1" style="text-align: center;">
+													<label> ก.ค. </label>
+												</div>
+												<div class="col-sm-1" style="text-align: center;">
+													<label> ส.ค. </label>
+												</div>
+												<div class="col-sm-1" style="text-align: center;">
+													<label> ก.ย. </label>
+												</div>
+												<div class="col-sm-1" style="text-align: center;">
+													<label> ต.ค. </label>
+												</div>
+												<div class="col-sm-1" style="text-align: center;">
+													<label> พ.ย. </label>
+												</div>
+												<div class="col-sm-1" style="text-align: center;">
+													<label> ธ.ค. </label>
+												</div>
+												
+											</div>
+											
+											<div class="form-group row">
+												<div class="col-sm-5" style="text-align: center;">
+												</div>
+												<div class="col-sm-1">
+													<input type="text" onchange="checkValueTopThree(event)"
+														class="form-control" id="topThreePriceArray"
+														name="topThreePriceArray" th:value="${topThreePriceArray}" placeholder="รายรับ"
+														oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+												</div>
+												<div class="col-sm-1">
+													<input type="text" onchange="checkValueTodThree(event)"
+														class="form-control" id="todPriceArray"
+														name="todPriceArray" th:value="${todPriceArray}" placeholder="รายรับ"
+														oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+												</div>
+												<div class="col-sm-1">
+													<input type="text" onchange="checkValueThree(event)" class="form-control" 
+													    id="threeArray" name="threeArray"
+														th:value="${threeArray}" placeholder="รายรับ"
+														oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+												</div>
+												<div class="col-sm-1">
+													<input type="text" onchange="checkValueTopThree(event)"
+														class="form-control" id="topThreePriceArray"
+														name="topThreePriceArray" th:value="${topThreePriceArray}" placeholder="รายรับ"
+														oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+												</div>
+												<div class="col-sm-1">
+													<input type="text" onchange="checkValueTodThree(event)"
+														class="form-control" id="todPriceArray"
+														name="todPriceArray" th:value="${todPriceArray}" placeholder="รายรับ"
+														oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+												</div>
+												<div class="col-sm-1">
+													<input type="text" onchange="checkValueThree(event)" class="form-control" 
+													    id="threeArray" name="threeArray"
+														th:value="${threeArray}" placeholder="รายรับ"
+														oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+												</div>
+												
+												<label id="addThreeMessg" class="col-sm-1 col-form-label" style="text-align: center; color: red; display: none"><i class="fas fa-window-close"></i></label>
+												<div class="col-sm-1" style="text-align: right;">
+												</div>
+	
+											</div>
+										
+											<div class="form-group row">
+												<div class="col-sm-5">
+													<input type="text" onchange="checkValueThree(event)" class="form-control" 
+													    id="threeArray" name="threeArray" disabled="disabled"
+														th:value="${threeArray}">
+												</div>
+												<div class="col-sm-1">
+													<input type="text" onchange="checkValueTopThree(event)"
+														class="form-control" id="topThreePriceArray"
+														name="topThreePriceArray" th:value="${topThreePriceArray}"
+														oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+												</div>
+												<div class="col-sm-1">
+													<input type="text" onchange="checkValueTodThree(event)"
+														class="form-control" id="todPriceArray"
+														name="todPriceArray" th:value="${todPriceArray}"
+														oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+												</div>
+												<div class="col-sm-1">
+													<input type="text" onchange="checkValueThree(event)" class="form-control" 
+													    id="threeArray" name="threeArray"
+														th:value="${threeArray}"
+														oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+												</div>
+												<div class="col-sm-1">
+													<input type="text" onchange="checkValueTopThree(event)"
+														class="form-control" id="topThreePriceArray"
+														name="topThreePriceArray" th:value="${topThreePriceArray}"
+														oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+												</div>
+												<div class="col-sm-1">
+													<input type="text" onchange="checkValueTodThree(event)"
+														class="form-control" id="todPriceArray"
+														name="todPriceArray" th:value="${todPriceArray}"
+														oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+												</div>
+												<div class="col-sm-1">
+													<input type="text" onchange="checkValueThree(event)" class="form-control" 
+													    id="threeArray" name="threeArray"
+														th:value="${threeArray}"
+														oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+												</div>
+												
+											</div>
+										</div>
+									</div>
+					                 
+					                 
 					              <!-- /.card-body -->
 					            </div>
 					            <!-- /.card -->
@@ -87,7 +300,9 @@
 					          <!-- /.col -->
 					        </div>
 						<!-- /.card -->
+						</div>
 					</div>
+				</div>
 				</div>
 			</section>
 			<!-- /.content -->
