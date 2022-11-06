@@ -39,16 +39,16 @@
 				
 				<div class="card card-info">
               <div class="card-header">
-                <h3 class="card-title">เพิ่มเมนู</h3>
+                <h3 class="card-title">ตั้งค่า > เพิ่มหน้าจอ</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
-              <form class="form-horizontal">
+              <form class="form-horizontal" th:object="${setting}" th:action=@{/insertPage} method="post">
                 <div class="card-body">
                 <div class="form-group row">
 					<div class="col-sm-5"></div>
 					<div class="col-sm-2">
-						<select class="form-control select2" style="width: 100%;" id="lavelList" name="lavelList" required="required" onchange="listPage()">
+						<select class="form-control select2" style="width: 100%;" id="level1" name="level1"  onchange="listPage()">
 							<option selected="selected" style="text-align: center;" value="1">เมนูหลัก</option>
 							<option selected="selected" style="text-align: center;" value="2">เมนูย่อย</option>
 						</select>
@@ -58,8 +58,8 @@
 				<div class="form-group row" style="display: none" id="listPage">
 					<div class="col-sm-5"></div>
 					<div class="col-sm-2">
-						<select class="form-control select2" style="width: 100%;" id="lavelSelect" name="lavelSelect" required="required">
-							<option selected="selected" style="text-align: center;" value="">-- เลือกเมนูหลัก --]</option>
+						<select class="form-control select2" style="width: 100%;" id="level2Ref1" name="level2Ref1" >
+							<option selected="selected" style="text-align: center;" value="">-- เลือกเมนูหลัก --</option>
 							<option th:each="obj : ${listUser}" th:value="${obj.userId}" th:name="${obj.name}" th:text="${obj.name}"></option>
 
 						</select>
@@ -70,19 +70,19 @@
                   <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">ชื่อหน้า</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="inputEmail3">
+                      <input type="text" class="form-control" id="namePage" name="namePage">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label">Path Controller</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="inputPassword3">
+                      <input type="text" class="form-control" id="pathController" name="pathController">
                     </div>
                   </div>
                   <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label">icon</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" id="inputPassword3">
+                      <input type="text" class="form-control" id="icon" name="icon">
                     </div>
                   </div>
                 </div>

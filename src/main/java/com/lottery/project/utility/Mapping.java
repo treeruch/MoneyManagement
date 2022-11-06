@@ -42,6 +42,8 @@ public class Mapping {
 	
 
 	public class POST {
+		public static final String POST_MAP_INSERT_PAGE= "/insertPage";
+		
 		public static final String POST_MAP_USER = "/insertUser";
 		public static final String POST_MAP_LOTTERY_ADD = "/lotteryAdd";
 		public static final String POST_MAP_INSERT_LOTTERY = "/insertLottery";

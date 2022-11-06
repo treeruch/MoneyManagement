@@ -1,9 +1,9 @@
 $(document).ready(function(){
-	$('#lavelList').val('1');
+	$('#level1').val('1');
 });
 
 function listPage(){
-	var menu = $('#lavelList').val();
+	var menu = $('#level1').val();
 	
 	if(menu == '2'){
 		$('#listPage').css('display','');
