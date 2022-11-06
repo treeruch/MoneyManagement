@@ -392,7 +392,7 @@ public class LotteryCtrl {
 	public ModelAndView insertLottery(LotteryModel userModel, HttpSession session) throws Exception{
 		System.out.println("### Start Post Insert Lottery ... ");
 		ModelAndView modelview = new ModelAndView();
-		modelview.setViewName(Mapping.VIEW.VIEW_MAP_LOTTERY_LIST);
+		modelview.setViewName(Mapping.PAGE.VIEW_MAP_LOTTERY_LIST);
 		
 			List<LotteryModel> listThree = (List<LotteryModel>) session.getAttribute("listThreeSave");
 			List<LotteryModel> listTwo = (List<LotteryModel>) session.getAttribute("listTwoSave");
@@ -432,11 +432,11 @@ public class LotteryCtrl {
 		return modelview; // view
 	}
 	
-	@GetMapping(Mapping.GET.GET_MAP_LOTTERY_LIST)
+	@GetMapping(Mapping.GET.GET_MAP_MONEY_ADD)
     public ModelAndView lotteryList(HttpSession session) {
 		System.out.println("### Start lottery list ...");
     	ModelAndView modelview = new ModelAndView();
-    	modelview.setViewName(Mapping.VIEW.VIEW_MAP_LOTTERY_LIST);
+    	modelview.setViewName(Mapping.PAGE.VIEW_MAP_LOTTERY_LIST);
     	
 	
     	List<HistoryModel> list = historyService.findAllDesc();

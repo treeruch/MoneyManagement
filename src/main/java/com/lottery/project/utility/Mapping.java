@@ -25,7 +25,7 @@ public class Mapping {
 	public class PAGE {
 		public static final String LOGIN = "login";
 		public static final String REGISTER = "register";
-		
+		public static final String VIEW_MAP_LOTTERY_LIST = "moneyAdd";
 		
 		public static final String DASHBOARD = "dashboard";
 		
@@ -33,9 +33,11 @@ public class Mapping {
 	
 
 	public class GET {
+		public static final String GET_MAP_MONEY_ADD = "/moneyAdd";
+		
 		public static final String GET_MAP_USER = "/user";
 		public static final String GET_MAP_LOTTERY_ADD = "/lotteryAdd";
-		public static final String GET_MAP_LOTTERY_LIST = "/lotteryList";
+		
 		public static final String GET_MAP_LOTTERY_TOP_THREE = "/lotteryTopThree";
 		public static final String GET_MAP_LOTTERY_TOD = "/lotteryTod";
 		public static final String GET_MAP_LOTTERY_TOP_TWO = "/lotteryTopTwo";
@@ -61,7 +63,7 @@ public class Mapping {
 		public static final String VIEW_MAP_USER = "lotteryUser";
 		public static final String VIEW_MAP_LOTTERY_ADD = "lotteryAdd";
 		public static final String VIEW_MAP_LOTTERY_SHOW = "lotteryShowListAdd";
-		public static final String VIEW_MAP_LOTTERY_LIST = "lotteryList";
+		
 		public static final String VIEW_MAP_LOTTERY_TOP_THREE = "lotteryTopThree";
 		public static final String VIEW_MAP_LOTTERY_TOD = "lotteryTod";
 		public static final String VIEW_MAP_LOTTERY_TOP_TWO = "lotteryTopTwo";

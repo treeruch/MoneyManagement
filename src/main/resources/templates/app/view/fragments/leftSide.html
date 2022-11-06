@@ -35,7 +35,7 @@
           </li>
          
           <li class="nav-item">
-            <a th:href="@{/lotteryList}" class="nav-link">
+            <a th:href="@{/moneyAdd}" class="nav-link">
               <i class="nav-icon fas fa-list"></i>
               <p>
                 แผนการเงิน
@@ -90,10 +90,26 @@
             </ul>
           </li>
          </ul>
-      </nav> -->
+      </nav>
+      
+      <nav class="mt-2 absolute" style="position: absolute;bottom: 20px;width: 50%;">
+           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+           <li class="nav-item">
+            <a th:href="@{/moneyAdd}" class="nav-link">
+              <i class="nav-icon fas fa-database"></i>
+              <p>
+                ตั้งค่า
+              </p>
+            </a>
+          	</li>
+         
+          </ul>
+      </nav>
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
+    
+    
   </aside>
  </div>
  
