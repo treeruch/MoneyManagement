@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	layout:decorate="~{app/view/fragments/mainLayout}">
+<meta charset="UTF-8">
+<head>
+	<th:block layout:fragment="pageScript">
+	<!-- DataTables -->
+	<link rel="stylesheet"
+		href="../../moneyManagement/plugins/datatables-bs4/css/dataTables.bootstrap4.css">
+	<!-- Theme style -->
+	<link rel="stylesheet" href="../../moneyManagement/dist/css/adminlte.min.css">
+	
+    </th:block>
+    <style>
+    @media (min-width: 768px){
+      .main-header {
+		    transition: margin-left .3s ease-in-out;
+		    margin-left: 0px;
+		}
+	}
+    </style>
+    
+</head>
+<body>
+	<th:block layout:fragment="content">
+		<div class="content-wrapper">
+			<div>
+				<div class="container-fluid">
+					<div class="row mb-2">
+						<div class="col-sm-8"></div>
+					</div>
+				</div>
+			</div>
+			<!-- Main content -->
+			<section class="content">
+				<div class="col-md-12">
+				
+				<div class="card card-info">
+              <div class="card-header">
+                <h3 class="card-title">เพิ่มเมนู</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form class="form-horizontal">
+                <div class="card-body">
+                <div class="form-group row">
+					<div class="col-sm-5"></div>
+					<div class="col-sm-2">
+						<select class="form-control select2" style="width: 100%;" id="lavelList" name="lavelList" required="required" onchange="listPage()">
+							<option selected="selected" style="text-align: center;" value="1">เมนูหลัก</option>
+							<option selected="selected" style="text-align: center;" value="2">เมนูย่อย</option>
+						</select>
+					</div>
+				</div>
+				
+				<div class="form-group row" style="display: none" id="listPage">
+					<div class="col-sm-5"></div>
+					<div class="col-sm-2">
+						<select class="form-control select2" style="width: 100%;" id="lavelSelect" name="lavelSelect" required="required">
+							<option selected="selected" style="text-align: center;" value="">-- เลือกเมนูหลัก --]</option>
+							<option th:each="obj : ${listUser}" th:value="${obj.userId}" th:name="${obj.name}" th:text="${obj.name}"></option>
+
+						</select>
+					</div>
+				</div>
+                
+                
+                  <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">ชื่อหน้า</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="inputEmail3">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">Path Controller</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="inputPassword3">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">icon</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="inputPassword3">
+                    </div>
+                  </div>
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer" style="text-align: center;">
+					<div class="col-md-12">
+						<div class="form-group">
+						<a th:href="@{/pageAdd}" class="btn btn-secondary">ยกเลิก</a>
+							<button id="buttonSave" type="submit"
+								class="btn btn-success">บันทึก</button>
+							
+						</div>
+					</div>
+                </div>
+                <!-- /.card-footer -->
+              </form>
+            </div>
+				</div>
+			</section>
+			<!-- /.content -->
+
+		</div>
+		
+		<!-- jQuery -->
+		<script src="../../moneyManagement/plugins/jquery/jquery.min.js"></script>
+		<!-- Bootstrap 4 -->
+		<script src="../../moneyManagement/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<!-- DataTables -->
+		<script src="../../moneyManagement/plugins/datatables/jquery.dataTables.js"></script>
+		<script src="../../moneyManagement/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+
+		<script type="text/javascript" th:src="@{/setting/js/setting.js}"></script>
+	</th:block>
+	<script src="dist/js/demo.js"></script>
+</body>
+<script>
+
+</script>
+</html>

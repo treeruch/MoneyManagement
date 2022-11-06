@@ -15,6 +15,7 @@ public class Mapping {
 		public static final String REGISTER = "register";
 		public static final String VIEW_MAP_LOTTERY_LIST = "moneyAdd";
 		public static final String DASHBOARD = "dashboard";
+		public static final String PAGE_ADD = "pageAdd";
 		public static final String SETTING = "setting";
 		
 	}
@@ -24,6 +25,8 @@ public class Mapping {
 		public static final String GET_MAP_LOGIN = "/login";
 		public static final String GET_MAP_REGISTER = "/register";
 		public static final String GET_MAP_MONEY_ADD = "/moneyAdd";
+		public static final String GET_MAP_PAGE_ADD = "/pageAdd";
+		
 		public static final String GET_MAP_SETTING = "/setting";
 		
 		

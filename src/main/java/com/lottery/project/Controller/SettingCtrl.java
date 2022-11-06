@@ -17,6 +17,13 @@ import com.lottery.project.utility.Mapping;
 public class SettingCtrl {
 
 	
+	@GetMapping(Mapping.GET.GET_MAP_PAGE_ADD)
+	 public ModelAndView pageAdd(HttpServletRequest request,HttpSession session) { 
+		ModelAndView modelAndView = new ModelAndView(Mapping.PAGE.PAGE_ADD);
+	
+		return modelAndView; 
+	}
+	
 	@GetMapping(Mapping.GET.GET_MAP_SETTING)
 	 public ModelAndView setting(HttpServletRequest request,HttpSession session) { 
 		ModelAndView modelAndView = new ModelAndView(Mapping.PAGE.SETTING);
